@@ -70,7 +70,7 @@ Function Set-FreeIPAAPICredentials {
                   EncryptedAdminAccount = $EncryptedLogin
               }
               $FolderName = 'Manage-FreeIPA'
-              if($null -eq $ConfigName){
+              if($null -eq $ConfigName -or '' -eq $ConfigName){
                   $ConfigName = 'Manage-FreeIPA.xml'
               }
               else{
@@ -95,11 +95,11 @@ Function Import-FreeIPAAPICrendentials {
           [securestring]$MasterPassword,
           [Parameter(Mandatory=$false)]
           [ValidateNotNullOrEmpty()]
-          [securestring]$ConfigName
+          [string]$ConfigName
       )
       process {
           $FolderName = 'Manage-FreeIPA'
-          if($null -eq $ConfigName){
+		  if($null -eq $ConfigName -or '' -eq $ConfigName){
               $ConfigName = 'Manage-FreeIPA.xml'
           }
           else{
